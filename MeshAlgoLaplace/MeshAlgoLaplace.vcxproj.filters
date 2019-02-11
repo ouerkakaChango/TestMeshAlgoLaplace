@@ -21,12 +21,24 @@
     <ClInclude Include="targetver.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="MeshUtility.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshTransform.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="MeshAlgoLaplace.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshUtility.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshTransform.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
