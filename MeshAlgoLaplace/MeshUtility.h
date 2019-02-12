@@ -119,6 +119,8 @@ public:
 			z = z / r;
 		}
 	}
+
+	void Set(double _x, double _y, double _z);
 };
 
 double Dot(const Vec3& a, const Vec3& b);

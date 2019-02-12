@@ -3,6 +3,12 @@
 
 vector<Vertex> VB;
 
+void Vertex::Set(double _x, double _y, double _z) {
+	x = _x;
+	y = _y;
+	z = _z;
+}
+
 MeshUtility::MeshUtility()
 {
 }

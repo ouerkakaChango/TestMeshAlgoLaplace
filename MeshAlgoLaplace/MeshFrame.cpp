@@ -10,3 +10,8 @@ MeshFrame::MeshFrame(vector<Vertex> _VB, vector<int> _boundaryBuffer) :VB(_VB), 
 		}
 	}
 };
+
+void MeshFrame::SetBoundaryTransform(vector<TransformQR> _boundaryTransBuffer) {
+	boundaryTransBuffer = _boundaryTransBuffer;
+	//传播算法，先使用线性传播
+}
