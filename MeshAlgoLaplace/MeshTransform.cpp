@@ -67,3 +67,9 @@ Quaternion Normal(const Quaternion& q) {
 	re.z = q.z / len;
 	return re;
 }
+
+TransformQR::TransformQR(Vec3 v1, Vec3 v2) {
+	r = v2.Size() / v1.Size();
+	//GetQua的函数内保证了返回值已经单位化
+	q = GetQua(v1, v2);
+}

@@ -35,6 +35,8 @@ class TransformQR{
 public:
 	Quaternion q;
 	double r;
+	TransformQR() :q(Quaternion()), r(0.0) {}
 	TransformQR(Quaternion _q, double _r) :q(Normal(_q)), r(_r) {}
+	TransformQR(Vec3 v1, Vec3 v2);
 };
 
