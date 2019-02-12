@@ -147,6 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="MeshFrame.h" />
     <ClInclude Include="MeshTransform.h" />
     <ClInclude Include="MeshUtility.h" />
     <ClInclude Include="stdafx.h" />
@@ -154,6 +155,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MeshAlgoLaplace.cpp" />
+    <ClCompile Include="MeshFrame.cpp" />
     <ClCompile Include="MeshTransform.cpp" />
     <ClCompile Include="MeshUtility.cpp" />
     <ClCompile Include="stdafx.cpp">
