@@ -24,6 +24,39 @@ Quaternion Quaternion::operator*(const Vec3& v) {
 	return (*this)*Quaternion(0.0, v.x, v.y, v.z);
 }
 
+Quaternion Quaternion::operator*(double n) {
+	Quaternion re;
+	re.w = w * n;
+	re.x = x * n;
+	re.y = y * n;
+	re.z = z * n;
+	return re;
+}
+
+void Quaternion::operator*=(double n) {
+	w *= n;
+	x *= n;
+	y *= n;
+	z *= n;
+}
+
+void Quaternion::operator/=(double n) {
+	if (Near0(n)) {
+		throw;
+	}
+	w /= n;
+	x /= n;
+	y /= n;
+	z /= n;
+}
+
+void Quaternion::operator+=(const Quaternion& q) {
+	w += q.w;
+	x += q.x;
+	y += q.y;
+	z += q.z;
+}
+
 Quaternion Quaternion::operator/(double n) {
 	Quaternion re;
 	if (Near0(n)) {
@@ -72,4 +105,24 @@ TransformQR::TransformQR(Vec3 v1, Vec3 v2) {
 	r = v2.Size() / v1.Size();
 	//GetQua的函数内保证了返回值已经单位化
 	q = GetQua(v1, v2);
+}
+
+TransformQR TransformQR::operator*(double n) {
+	TransformQR re;
+	re.q = q * n;
+	re.r = r * n;
+	return re;
+}
+
+void TransformQR::operator+=(const TransformQR& transQR) {
+	q += transQR.q;
+	r += transQR.r;
+}
+
+void TransformQR::operator/=(double n) {
+	if (Near0(n)) {
+		throw;
+	}
+	q /= n;
+	r /= n;
 }

@@ -20,7 +20,11 @@ public:
 	Quaternion(double _w, double _x, double _y, double _z) :w(_w), x(_x), y(_y), z(_z) {}
 	Quaternion operator*(const Quaternion& q);
 	Quaternion operator*(const Vec3& v);
+	Quaternion operator*(double n);
 	Quaternion operator/(double n);
+	void operator*=(double n);
+	void operator/=(double n);
+	void operator+=(const Quaternion& q);
 	Quaternion Conjugate();
 	Quaternion Inverse();
 	double Size() const;
@@ -38,5 +42,8 @@ public:
 	TransformQR() :q(Quaternion()), r(0.0) {}
 	TransformQR(Quaternion _q, double _r) :q(Normal(_q)), r(_r) {}
 	TransformQR(Vec3 v1, Vec3 v2);
+	TransformQR operator*(double n);
+	void operator/=(double n);
+	void operator+=(const TransformQR& transQR);
 };
 
