@@ -24,13 +24,39 @@ void MeshFrame::SetBoundaryTransform(vector<TransformQR> _boundaryTransBuffer) {
 	//tf=sum(w*t[i])
 	//w=1/dist(vf,vboundary[i])
 	TransformQR tTrans;
+	vector<double> wVec;
+	double allW;
 	for (int i = 0; i < int(freeBuffer.size()); i++) {
+		//清零，为下次准备
+		tTrans = TransformQR();
+		wVec.clear();
+		allW = 0;
 		for (int j = 0; j < int(boundaryBuffer.size()); j++) {
 			double tdis = (VB[boundaryBuffer[j]] - VB[freeBuffer[i]]).Size();
-			tTrans += _boundaryTransBuffer[j] * (1 / tdis);
+			//?? 本人的灵性改编，否则距离影响权重不明显
+			tdis = pow(tdis,50) ;
+			double w = 1 / tdis;
+			allW += w;
+			wVec.push_back(w);
+			//tTrans += _boundaryTransBuffer[j] * w;
+		}
+		for (int j = 0; j < int(boundaryBuffer.size()); j++) {
+			tTrans += boundaryTransBuffer[j] * (wVec[j] / allW);
 		}
 		freeTransBuffer.push_back(tTrans);
-		tTrans = TransformQR();
+	}
+
+	//至此所有free顶点受传播的transQR已计算完成，保存在freeTransBuffer
+	
+	//先试一下，改变VB，输出一下顶点
+	for (int i = 0; i < int(boundaryBuffer.size()); i++) {
+		auto& tVertex = VB[boundaryBuffer[i]];
+		tVertex.Set(Transform(boundaryTransBuffer[i], tVertex));
+	}
+
+	for (int i = 0; i < int(freeBuffer.size()); i++) {
+		auto& tVertex = VB[freeBuffer[i]];
+		tVertex.Set(Transform(freeTransBuffer[i], tVertex));
 	}
 }
 

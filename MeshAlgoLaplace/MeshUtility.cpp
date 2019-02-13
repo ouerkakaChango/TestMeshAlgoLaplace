@@ -9,13 +9,8 @@ void Vertex::Set(double _x, double _y, double _z) {
 	z = _z;
 }
 
-MeshUtility::MeshUtility()
-{
-}
-
-
-MeshUtility::~MeshUtility()
-{
+void Vertex::Set(Vec3 v) {
+	Set(v.x, v.y, v.z);
 }
 
 double Triangle::GetXCot() {

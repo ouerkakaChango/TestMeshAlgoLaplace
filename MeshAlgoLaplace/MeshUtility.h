@@ -9,8 +9,6 @@ using std::make_pair;
 class MeshUtility
 {
 public:
-	MeshUtility();
-	~MeshUtility();
 };
 
 class Vertex
@@ -121,6 +119,7 @@ public:
 	}
 
 	void Set(double _x, double _y, double _z);
+	void Set(Vec3 v);
 };
 
 double Dot(const Vec3& a, const Vec3& b);
